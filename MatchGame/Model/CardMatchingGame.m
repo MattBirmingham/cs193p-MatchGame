@@ -63,7 +63,7 @@ static const int COST_TO_CHOOSE = 1;
                         card.matched = YES;
                     } else {
                         self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
+                        otherCard.chosen = NO; // this is only working for 2 cards
                     }
                     break; // can only choose 2 cards
                 }

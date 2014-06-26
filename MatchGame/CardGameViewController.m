@@ -14,6 +14,7 @@
 @interface CardGameViewController ()
 @property (strong,nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @end
 
 @implementation CardGameViewController
@@ -52,6 +53,7 @@
         [cardButton setBackgroundImage:[self imageForCard:card]
                               forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d",[self.game score]];
     }
 }
 
@@ -63,6 +65,10 @@
     return (card.isChosen) ? [UIImage imageNamed:@"cardFront"] : [UIImage imageNamed:@"cardBack"];
 }
 
+- (IBAction)touchDealButton:(id)sender {
+    self.game = nil;
+    [self updateUI];
+}
 
 - (IBAction)touchCardButton:(UIButton *)sender {
     int chosenButtonIndex = [self.cardButtons indexOfObject:sender];

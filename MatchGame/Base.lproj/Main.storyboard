@@ -163,6 +163,20 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outletCollection property="cardButtons" destination="rqh-7r-qje" id="aMO-Nj-4vC"/>
+                        <outletCollection property="cardButtons" destination="goh-yw-nIH" id="ny2-gb-XrC"/>
+                        <outletCollection property="cardButtons" destination="fMG-v8-2gM" id="7g1-QV-k1V"/>
+                        <outletCollection property="cardButtons" destination="0dV-6V-RTU" id="lzm-NH-CgQ"/>
+                        <outletCollection property="cardButtons" destination="nma-5f-F7l" id="8ew-51-bJj"/>
+                        <outletCollection property="cardButtons" destination="6Jh-gm-n0K" id="YaV-kx-nIH"/>
+                        <outletCollection property="cardButtons" destination="T0W-Vf-wtI" id="LdT-pI-SNY"/>
+                        <outletCollection property="cardButtons" destination="ORC-YD-pkM" id="zxb-C3-K6R"/>
+                        <outletCollection property="cardButtons" destination="7g2-a6-wk8" id="l10-Gw-vh8"/>
+                        <outletCollection property="cardButtons" destination="VPg-VA-KKT" id="Rao-Jp-46d"/>
+                        <outletCollection property="cardButtons" destination="HGK-rL-Fn0" id="5ul-x8-4mP"/>
+                        <outletCollection property="cardButtons" destination="iBK-g8-45w" id="TR1-B4-vw3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

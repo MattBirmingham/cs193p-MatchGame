@@ -8,11 +8,12 @@
 
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 //#import "Deck.h"
 
 @interface CardGameViewController ()
-@property (strong,nonatomic) PlayingCardDeck *deck;
-
+@property (strong,nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @end
 
 @implementation CardGameViewController
@@ -31,23 +32,42 @@
 }
 */
 
-- (PlayingCardDeck *)deck {
-    if(!_deck) _deck = [[PlayingCardDeck alloc]init];
-    return _deck;
+- (CardMatchingGame *)game {
+    if (!_game) {
+        _game = [[CardMatchingGame alloc]initWithCardCount:[self.cardButtons count]
+                                                 usingDeck:[self createDeck]];
+    }
+    return _game;
+}
+
+- (PlayingCardDeck *)createDeck {
+    return [[PlayingCardDeck alloc]init];
+}
+
+- (void)updateUI {
+    for (UIButton *cardButton in self.cardButtons) {
+        int cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
+        Card *card = [self.game cardAtIndex:cardButtonIndex];
+        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[self imageForCard:card]
+                              forState:UIControlStateNormal];
+        cardButton.enabled = !card.isMatched;
+    }
+}
+
+- (NSString *)titleForCard:(Card *)card {
+    return (card.isChosen) ? card.contents : @"";
+}
+
+- (UIImage *)imageForCard:(Card *)card {
+    return (card.isChosen) ? [UIImage imageNamed:@"cardFront"] : [UIImage imageNamed:@"cardBack"];
 }
 
 
 - (IBAction)touchCardButton:(UIButton *)sender {
-    if([sender.currentTitle length]) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardBack"] forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-    } else {
-        Card *nextCard = [self.deck drawRandomCard];
-        if(nextCard) {
-            [sender setBackgroundImage:[UIImage imageNamed:@"cardFront"] forState:UIControlStateNormal];
-            [sender setTitle:nextCard.contents forState:UIControlStateNormal];
-        }
-    }
+    int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    [self.game chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI];
 }
 
 @end

@@ -56,16 +56,23 @@
 
 - (int)match:(NSArray *)otherCards {
     int score = 0;
+    NSString *reason = @"";
     
     if ([otherCards count]==1) {
         //Match just one card - for now
         PlayingCard *card = [otherCards firstObject];
         if (card.rank == self.rank) {
             score = 4;
+            reason = [NSString stringWithFormat:@"%@ %@ %@ matched!", reason, self.contents, card.contents];
         } else if ([card.suit isEqualToString:self.suit]) {
             score = 1;
+            reason = [NSString stringWithFormat:@"%@ %@ %@ matched!", reason, self.contents, card.contents];
+        } else {
+            reason = [NSString stringWithFormat:@"%@ %@ %@ didn't match!", reason, self.contents, card.contents];
+            // no match
         }
     }
+    self.matchReason = reason;
     
     return score;
 }

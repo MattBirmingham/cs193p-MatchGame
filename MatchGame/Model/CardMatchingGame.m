@@ -12,6 +12,7 @@
 /// This is called the "Class Extensions"
 @property (strong,nonatomic) NSMutableArray *cards; //array of Cards
 @property (nonatomic, readwrite) NSInteger score;
+@property (strong,nonatomic, readwrite) NSString *scoreReason;
 @end
 
 @implementation CardMatchingGame
@@ -73,6 +74,7 @@ static const int COST_TO_CHOOSE = 1;
             card.chosen = YES;
             
         }
+        self.scoreReason = card.matchReason;
     }
     
     

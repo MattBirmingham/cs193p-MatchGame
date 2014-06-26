@@ -168,7 +168,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGg-a9-hzE">
-                                <rect key="frame" x="115" y="472" width="91" height="47"/>
+                                <rect key="frame" x="209" y="501" width="91" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Re-deal" backgroundImage="cardFront">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -178,10 +178,18 @@
                                     <action selector="touchDealButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BSK-0U-Txd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's start matching!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pE-AK-2Hi">
+                                <rect key="frame" x="20" y="332" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="matchLabel" destination="1pE-AK-2Hi" id="bML-pX-SAF"/>
                         <outlet property="scoreLabel" destination="JgL-2p-Olz" id="0Jf-8w-cLL"/>
                         <outletCollection property="cardButtons" destination="rqh-7r-qje" id="aMO-Nj-4vC"/>
                         <outletCollection property="cardButtons" destination="goh-yw-nIH" id="ny2-gb-XrC"/>

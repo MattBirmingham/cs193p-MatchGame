@@ -15,6 +15,7 @@
 @property (strong,nonatomic) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *matchLabel;
 @end
 
 @implementation CardGameViewController
@@ -54,6 +55,7 @@
                               forState:UIControlStateNormal];
         cardButton.enabled = !card.isMatched;
         self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d",[self.game score]];
+        self.matchLabel.text = self.game.scoreReason;
     }
 }
 

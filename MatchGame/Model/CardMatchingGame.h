@@ -20,5 +20,6 @@
 - (Card *)cardAtIndex:(NSUInteger)index;
 
 @property (nonatomic, readonly) NSInteger score;
+@property (strong, nonatomic, readonly) NSString *scoreReason;
 
 @end

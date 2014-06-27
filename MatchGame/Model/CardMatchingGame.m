@@ -87,7 +87,7 @@ static const int COST_TO_CHOOSE = 1;
                 }
             }
             
-            NSLog([NSString stringWithFormat:@"Game: %d, Selected cards: %d",self.matchCount, [selectedCards count]]);
+            NSLog(@"Game: %d, Selected cards: %d",self.matchCount, [selectedCards count]);
             // if selected card count < game type, keep selecting
             // if selected card count > game type, close all of the matched cards
             // if selected card count == game type, run match algorithm

@@ -57,7 +57,32 @@
 - (int)match:(NSArray *)otherCards {
     int score = 0;
     NSString *reason = @"";
+  
+    if([otherCards count]>1) {
+        NSMutableArray *subCards = [[NSMutableArray alloc]init];
+        [subCards addObjectsFromArray:otherCards];
+        Card *subcard = [subCards objectAtIndex:0];
+        [subCards removeObjectAtIndex:0];
+        
+        score += [subcard match:subCards];
+        reason = [reason stringByAppendingString:subcard.matchReason];
+    }
     
+    
+    for (PlayingCard *card in otherCards) {
+        if (card.rank == self.rank) {
+            score = 4;
+            reason = [NSString stringWithFormat:@"%@ %@ %@ matched!", reason, self.contents, card.contents];
+        } else if ([card.suit isEqualToString:self.suit]) {
+            score = 1;
+            reason = [NSString stringWithFormat:@"%@ %@ %@ matched!", reason, self.contents, card.contents];
+        } else {
+            reason = [NSString stringWithFormat:@"%@ %@ %@ didn't match!", reason, self.contents, card.contents];
+            // no match
+        }
+    }
+
+    /*
     if ([otherCards count]==1) {
         //Match just one card - for now
         PlayingCard *card = [otherCards firstObject];
@@ -72,6 +97,7 @@
             // no match
         }
     }
+    */
     self.matchReason = reason;
     
     return score;

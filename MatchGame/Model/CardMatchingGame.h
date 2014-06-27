@@ -14,7 +14,8 @@
 
 //DESIGNATED INITIALIZER
 - (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *)deck;
+                        usingDeck:(Deck *)deck
+                     cardsToMatch:(NSUInteger)matchCount;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;

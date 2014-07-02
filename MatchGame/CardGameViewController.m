@@ -77,10 +77,51 @@
 }
 
 
-- (IBAction)touchDealButton:(id)sender {
+- (void)confirmDealSheet:(UIActionSheet *)confirmDealSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //Handle the user's choice of content mode for the profile image.
     self.game = nil;
     self.gameSegment.enabled = YES;
     [self updateUI];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0:
+            self.game = nil;
+            self.gameSegment.enabled = YES;
+            [self updateUI];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+
+- (IBAction)touchDealButton:(UIButton *)sender {
+    
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Would you like to stop this game and re-deal?"
+                                                       message:nil
+                                                      delegate:self
+                                             cancelButtonTitle:@"Redeal"
+                                             otherButtonTitles:@"Continue Game", nil];
+    
+    [alertView show];
+
+    /*
+    UIActionSheet *confirmDealSheet = [[UIActionSheet alloc]initWithTitle:@"Confirm Re-deal"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"cancel"
+                                                   destructiveButtonTitle:@"Destruct"
+                                                        otherButtonTitles:nil];
+    
+    [confirmDealSheet showInView:self.view];
+    */
+    
+
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {

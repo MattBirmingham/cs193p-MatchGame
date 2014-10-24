@@ -7,7 +7,7 @@
 //
 
 #import "CardGameViewController.h"
-#import "PlayingCardDeck.h"
+//#import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 //#import "Deck.h"
 
@@ -46,8 +46,9 @@
     return _game;
 }
 
-- (PlayingCardDeck *)createDeck {
-    return [[PlayingCardDeck alloc]init];
+// This is an abstract method. Must be implemented.
+- (Deck *)createDeck {
+    return nil; // [[PlayingCardDeck alloc]init];
 }
 
 - (void)updateUI {
